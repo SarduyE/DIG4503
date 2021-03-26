@@ -1,0 +1,89 @@
+<html>
+  <body>
+    <script>
+        function readName(event) {
+            event.preventDefault(); // prevents default event 
+
+            let element = document.querySelector("#name"); // selecting name id 
+
+            // grabs element data, creates json object and returns a response 
+            fetch("/employees/" + element.value) 
+            .then((res) => {
+              return res.json();
+            }) 
+            .then((processed) => {
+
+              let reporting = document.querySelector("#reportingArea");
+
+              
+              if(processed.error) { // if object has an error set reporting to error message
+                reporting.innerHTML = processed.error;
+              } else { 
+                reporting.innerHTML = processed.age; // sets reporting to processed age from database.json
+              }
+            });
+
+        }
+
+        function readAge(event){
+          event.preventDefault(); //prevents default event 
+
+          let element = document.querySelector("#age");
+
+          // grabs element data, creates json object and returns a response 
+          fetch("/ages/" + element.value)
+          .then((res) => {
+            return res.json();
+          })
+          .then((processed) => {
+            let reporting = document.querySelector("#reportingArea");
+
+            if (processed.error) { // if object has an error set reporting to error message
+              reporting.innerHTML = processed.error;
+            } else {
+              reporting.innerHTML = processed.name; // sets reporting to processed age from database.json
+            }
+          });
+        }
+
+        function addEmployee(event) {
+            event.preventDefault();
+
+            let name = document.querySelector("#inputName");
+            let age = document.querySelector("#inputAge");
+
+            fetch("/api/employees/" + name.value + "/" + age.value, {
+                "method": "post"
+            }).then((res) => {
+                return res.json();
+            }).then((processed) => {
+                console.log(processed);
+            })
+            
+        }
+
+
+    </script>
+        <h2> Name </h2>
+    <form onSubmit="readName(event)">
+      <input id = "name" type="text">
+      <button>Submit</button>
+    </form>
+    <h2> Age </h2>
+    <form onSubmit="readAge(event)">
+    <input id="age" type="text">
+    <button>Submit</button>
+    <hr>
+  </form>
+  <hr>
+  
+  <h2>New name and age:</h2>
+  <form onsubmit="addEmployee(event)">
+      <input id="inputName" type="text">
+      <input id="inputAge" type="text">
+      <button>Submit</button>        
+  </form>
+  <h2>Reporting</h2>
+  <div id="reportingArea"></div>
+  </body>
+</html>
