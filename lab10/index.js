@@ -3,7 +3,7 @@ import fs from "fs";
 import cors from "cors";
 
 const App = Express(); // assigns express to a variable 
-const port = 4000; // assigns port number to a variable 
+const port = 3010; // assigns port number to a variable 
 
 App.use(cors());
 
