@@ -67,12 +67,12 @@
         <h2> Name </h2>
     <form onSubmit="readName(event)">
       <input id = "name" type="text">
-      <button>Submit</button>
+      <button  style ="color:white; background-color: blue">Submit</button>
     </form>
     <h2> Age </h2>
     <form onSubmit="readAge(event)">
     <input id="age" type="text">
-    <button>Submit</button>
+    <button style ="color:white; background-color: blue">Submit</button>
     <hr>
   </form>
   <hr>
@@ -81,9 +81,19 @@
   <form onsubmit="addEmployee(event)">
       <input id="inputName" type="text">
       <input id="inputAge" type="text">
-      <button>Submit</button>        
+      <button style ="color:white; background-color: blue">Submit</button>        
   </form>
   <h2>Reporting</h2>
   <div id="reportingArea"></div>
+  <hr>
+<h2>Upload your own:</h2>
+  <form ref='uploadForm' 
+  id='uploadForm' 
+  action='http://localhost:3010/upload' 
+  method='post' 
+  encType="multipart/form-data">
+    <input type="file" name="sampleFile" />
+    <input style ="color:white; background-color: blue" type='submit' value='Upload!' />
+</form>     
   </body>
 </html>
