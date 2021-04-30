@@ -3,7 +3,7 @@ import chalk from "chalk";
 import timestamp from 'time-stamp';
 
 
-const URL = "mongodb+srv://esarduyrodriguez:UFCZGeA55T7ZnT6N@cluster0.oewwc.mongodb.net"; //connect to database
+const URL = "mongodb+srv://esarduyrodriguez:UFCZGeA55T7ZnT6N@cluster0.oewwc.mongodb.net"; //connect to databasee
 
 // gather and list airbnb data
 MongoClient.connect(URL, {useUnifiedTopology: true})
